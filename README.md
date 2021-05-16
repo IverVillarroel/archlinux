@@ -49,12 +49,6 @@ PARTICION                  PARTICION       TIPO DE PARTICION
 /mnt                      /dev/sdX2           Linux x86-64 root(/)
 [SWAP]                    /dev/sdX3           Linux Swap
 ```
-para ingresar a la particion usamos la herramienta fdisk
-
-```
-fdisk /dev/sdX
-```
-
 Para verificar que estamos en modo UEFI, ejecutar el siguiente comando: 
 
 ```
@@ -63,6 +57,11 @@ Para verificar que estamos en modo UEFI, ejecutar el siguiente comando:
 
    Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
+para ingresar a la particion usamos la herramienta fdisk
+
+```
+fdisk /dev/sdX
+```
 6. haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", y lurgo:
  ```
  DEVICE       Size     Type
