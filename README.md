@@ -149,18 +149,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 despues de reiniciar dar permisos de uso para Sudo al nuevo usuario:
 
-```
+```sh
         visudo
 ```
-
-    Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:
+Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:
     
-``` 
-        myUser   ALL=(ALL) ALL
+```sh
+       myUser   ALL=(ALL) ALL
 ```
 
-    Para editar el documento, presionar la tecla i. Después de esto ya podremos agregar texto normalmente.
-    Para guardar los cambios, presionar ESC, luego escribir :wq y finalmente ENTER.
+Para editar el documento, presionar la tecla i. Después de esto ya podremos agregar texto normalmente.
+Para guardar los cambios, presionar ESC, luego escribir :wq y finalmente ENTER.
 
 
 
