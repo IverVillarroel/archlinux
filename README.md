@@ -9,3 +9,5 @@ instalaremos los siguientes paquetes:
 5. neovim
 6. google-chrome
 7. Spotify
+
+###Empecemos
