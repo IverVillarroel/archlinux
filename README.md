@@ -16,4 +16,9 @@ podemos encontrar la guia oficial desde el sitio oficial archlinux https://wiki.
 primero vamos a descargar la imagen ISO desde https://archlinux.org/download/ seleccionamos el servidor cercano y descargamos la imagen ISO.
 tambien necesitaremos el programa RUFUS para crear una USB booteable https://rufus.ie/es/ 
 
-Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde la usb 
+Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde USB. Archilinux nos dejara en la consola desde ahi tendremos que seguir por nuestra cuenta.
+configuramos nuestro teclado con el siguiente comando:
+
+sh```
+$ loadkeys Es
+```
