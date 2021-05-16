@@ -61,12 +61,10 @@ ls /sys/firmware/efi/efivars
 ```
 si visualizamos distintos archivos significa que tenemo la particion UEFI. 
 haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
-```
 DEVICE       Size     Type
 dev/sdX1      3G     EFI System 
 dev/sdX2      10     linux SWAP 
 dev/sdX3      XG     linux filesysten
-```
 Se recomienda que la memoria swap sea el doble de la memoria RAM 
 
 
