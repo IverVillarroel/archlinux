@@ -142,7 +142,7 @@ passwd usuario
 ```
 17. crear el gestor de arranque con grub
 ```
-grub-install --efi-directory=/boot/efi --bootloader-id=grub
+grub-install --efi-directory=/boot/efi --bootloader-id=grub --target=x86_64-efi
 generar el acrchivo de configuracion
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
