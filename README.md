@@ -8,4 +8,4 @@ instalaremos los siguientes paquetes:
 4. Alacritty 
 5. neovim
 6. google-chrome
-7. Spotif
+7. Spotify
