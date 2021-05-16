@@ -141,12 +141,22 @@ passwd
 useradd -m usuario
 passwd usuario
 ```
-16. crear el gestor de arranque con grub
+17. crear el gestor de arranque con grub
 ```
 grub-install --efi-directory=/boot/efi --bootloader-id=grub
 generar el acrchivo de configuracion
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+despues de reiniciar dar permisos de uso para Sudo al nuevo usuario:
+```
+        visudo
+```        
+    Buscar la línea  ROOT  ALL=(ALL) ALL y justo debajo de esta, agregar nuestro usuario, por ejemplo:*
+```   
+        myUser   ALL=(ALL) ALL
+```
+    Para editar el documento, presionar la tecla i. Después de esto ya podremos agregar texto normalmente.*
+    Para guardar los cambios, presionar ESC, luego escribir :wq y finalmente ENTER.*
 
 
 
