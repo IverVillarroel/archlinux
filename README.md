@@ -111,7 +111,7 @@ arch-chroot /mnt
 12.configurando la zona horaria, idioma del sistema ingles, distribucion del teclado 
 ```
 ln -sf /usr/share/zoneinfo/America/La_Paz /etc/localtime
-locale.gen 
+locale-gen 
 nvim /etc/vconsole.conf  "KEYMAP=la-latin1"
 echo nombredelequipo > /etc/hostname
 ```
