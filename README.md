@@ -20,6 +20,18 @@ asegurese que su interfaz de red este en la lista y activada:
 ip link
 ```
 para el caso de conectarse a una red wifi vease lo siguiente: https://wiki.archlinux.org/title/wpa_supplicant
+tambien puede utilizar iwctl n caso de tener sólo wifi, usar [iwctl](https://wiki.archlinux.org/index.php/Iwd#iwctl):
+        iwctl    
+    Listar los dispositivos:
+        device list
+    Escanear redes:    
+        station <dispositivo> scan        
+    Listar redes disponibles:        
+        station <dispositivo> get-networks     
+    Conectarse a una red:    
+        station <dispositivo> connect <SSID>
+    Salir de iwctl:    
+        exit
 
 5. Ahora vamos a particionar nuestro disco duro para ello listamos con el comando:
 ```
@@ -97,18 +109,7 @@ locale.gen
 nvim /etc/vconsole.conf  "KEYMAP=la-latin1"
 echo nombredelequipo > /etc/hostname
 ```
-13. En caso de tener sólo wifi, usar [iwctl](https://wiki.archlinux.org/index.php/Iwd#iwctl):
-        iwctl    
-    Listar los dispositivos:
-        device list
-    Escanear redes:    
-        station <dispositivo> scan        
-    Listar redes disponibles:        
-        station <dispositivo> get-networks     
-    Conectarse a una red:    
-        station <dispositivo> connect <SSID>
-    Salir de iwctl:    
-        exit
+
 
 14. al momento de iniciar archlinux no cargara, no gestionara el internet por cable es necesario activarlo 
 ```
