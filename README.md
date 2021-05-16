@@ -147,7 +147,11 @@ grub-install --efi-directory=/boot/efi --bootloader-id=grub
 generar el acrchivo de configuracion
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
-despues de reiniciar dar permisos de uso para Sudo al nuevo usuario:
+18. imagen initramfs nueva
+```
+mkinitcpio -P
+```
+19. despues de reiniciar dar permisos de uso para Sudo al nuevo usuario:
 
 ```sh
         visudo
