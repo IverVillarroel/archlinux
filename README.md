@@ -21,3 +21,7 @@ configuramos nuestro teclado con el siguiente comando:
 ```sh
 $ loadkeys Es
 ```
+verificamos la conexion a internet con el siguiente comando:
+```sh
+ping google.com
+```
