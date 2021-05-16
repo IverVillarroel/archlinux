@@ -85,7 +85,7 @@ mount /dev/sdX1 /mnt/boot/efi
 ```
 una vez montada las particiones instalaremos los paquetes escenciales 
 ```
-pacstrap /mnt base linux linux-firmware base-devel efibootmgr grub networkmanager dhcpcd
+pacstrap /mnt base linux linux-firmware base-devel efibootmgr grub networkmanager dhcpcd neovim
 ```
 paquetes adicionales en el caso de tener wifi 
 ```
@@ -95,6 +95,43 @@ paquetes adicionales para el touchpad
 ```
 xf86-input-synaptics
 ```
+configuracion del sistema 
+```
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+ingresando al sistema con chroot
+```
+arch-chroot /mnt
+```
+configurando la zona horaria, idioma del sistema ingles, distribucion del teclado 
+```
+ln -sf /usr/share/zoneinfo/America/La_Paz /etc/localtime
+locale.gen 
+nvim /etc/vconsole.conf  "KEYMAP=la-latin1"
+nvim /etc/hostname       "nombredelequipo"
+```
+al iniciar archlinux no cargara no gestionara el internet por cable es necesario activarlo 
+```
+systemctl enable NetworkManager
+```
+para gestionar el wifi 
+```
+nmcli dev wifi connect "ssid" password "00000"
+```
+añadir contraseña al root, crear un nuevo usuario y contraseña de usuario.
+```
+passwd 
+useradd -m usuario
+passwd usuario
+```
+crear el gestor de arranque con grub
+```
+grub-install --efi-directory=/boot/efi --bootloader-id=grub
+generar el acrchivo de configuracion
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
 
 
 
