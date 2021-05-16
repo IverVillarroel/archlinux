@@ -61,11 +61,40 @@ ls /sys/firmware/efi/efivars
 ```
 si visualizamos distintos archivos significa que tenemo la particion UEFI. 
 haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
-1. DEVICE       Size     Type
-2. dev/sdX1      3G     EFI System 
-3. dev/sdX2      10     linux SWAP 
-4. dev/sdX3      XG     linux filesysten
+ ```
+ DEVICE       Size     Type
+ dev/sda1      3G      EFI System 
+ dev/sda2      10G     linux SWAP 
+ dev/sda3      XG      linux filesysten
+```
 Se recomienda que la memoria swap sea el doble de la memoria RAM 
+formatearemos las particiones:
+```
+mkfs.vfat -F32 dev/sdX1
+mkfs.ext4      dev/sdX3
+```
+para la particion swap formatear y activar
+```
+mkswap /dev/sdX2
+swapon /dev/sdX2
+```
+para montar los sistemas de archivos 
+```
+mount /dev/sdX3 /mnt
+mount /dev/sdX1 /mnt/boot/efi
+```
+una vez montada las particiones instalaremos los paquetes escenciales 
+```
+pacstrap /mnt base linux linux-firmware base-devel efibootmgr grub networkmanager dhcpcd
+```
+paquetes adicionales en el caso de tener wifi 
+```
+netctl wpa_supplicant dialog
+```
+paquetes adicionales para el touchpad 
+```
+xf86-input-synaptics
+```
 
 
 
