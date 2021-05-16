@@ -13,10 +13,9 @@ instalaremos los siguientes paquetes:
 ## intall ArchLinux
 podemos encontrar la guia oficial desde el sitio oficial archlinux https://wiki.archlinux.org/title/Installation_guide 
 
-primero vamos a descargar la imagen ISO desde https://archlinux.org/download/ seleccionamos el servidor cercano y descargamos la imagen ISO.
-tambien necesitaremos el programa RUFUS para crear una USB booteable https://rufus.ie/es/ 
+primero vamos a descargar la imagen ISO desde https://archlinux.org/download/ seleccionamos el servidor cercano a donde nos encontramos y descargamos la imagen ISO. tambien necesitaremos el programa RUFUS para crear una USB booteable https://rufus.ie/es/ 
 
-Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde USB. Archilinux nos dejara en la consola desde ahi tendremos que seguir por nuestra cuenta.
+Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde el USB. Archilinux nos dejara en la consola desde ahi tendremos que seguir por nuestra cuenta.
 configuramos nuestro teclado con el siguiente comando:
 ```sh
 $ loadkeys Es
@@ -25,7 +24,7 @@ verificamos la conexion a internet con el siguiente comando:
 ```sh
 ping google.com
 ```
-si es el caso no tener internet, listamos las interfaces de red:
+asegurese que su interfaz de red este en la lista y activada:
 ```
 ip link
 ```
