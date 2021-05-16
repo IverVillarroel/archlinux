@@ -25,3 +25,7 @@ verificamos la conexion a internet con el siguiente comando:
 ```sh
 ping google.com
 ```
+si es el caso no tener internet, listamos las interfaces de red:
+```
+ip link
+```
