@@ -18,7 +18,6 @@ tambien necesitaremos el programa RUFUS para crear una USB booteable https://ruf
 
 Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde USB. Archilinux nos dejara en la consola desde ahi tendremos que seguir por nuestra cuenta.
 configuramos nuestro teclado con el siguiente comando:
-
-sh```
+```sh
 $ loadkeys Es
 ```
