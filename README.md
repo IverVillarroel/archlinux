@@ -103,8 +103,8 @@ xf86-input-synaptics
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
-  Verificar:
-        cat /mnt/etc/fstab
+  *Verificar:  cat /mnt/etc/fstab*
+        
 11. ingresando al sistema con chroot
 ```
 arch-chroot /mnt
