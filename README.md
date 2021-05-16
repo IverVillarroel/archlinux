@@ -10,4 +10,10 @@ instalaremos los siguientes paquetes:
 6. google-chrome
 7. Spotify
 
-### Empecemos
+## intall ArchLinuc
+podemos encontrar la guia oficial desde el sitio oficial archlinux https://wiki.archlinux.org/title/Installation_guide 
+
+primero vamos a descargar la imagen ISO desde https://archlinux.org/download/ seleccionamos el servidor cercano y descargamos la imagen ISO.
+tambien necesitaremos el programa RUFUS para crear una USB booteable https://rufus.ie/es/ 
+
+Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde la usb 
