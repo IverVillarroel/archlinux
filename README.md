@@ -122,7 +122,7 @@ echo nombredelequipo > /etc/hostname
 ```
 systemctl enable NetworkManager
 ```
-para gestionar el wifi con wpa_supplicant
+para gestionar el wifi con wpa_supplicant si fuera el caso
 ```
 nmcli dev wifi connect "ssid" password "00000"
 ```
