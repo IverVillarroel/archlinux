@@ -63,7 +63,7 @@ Para verificar que estamos en modo UEFI, ejecutar el siguiente comando:
 
    Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
-6. haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
+6. haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", y lurgo:
  ```
  DEVICE       Size     Type
  dev/sda1      3G      EFI System 
