@@ -61,7 +61,7 @@ Para verificar que estamos en modo UEFI, ejecutar el siguiente comando:
  ls /sys/firmware/efi/efivars
 ```
 
-              *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
+   Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
 
 6. haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
  ```
