@@ -65,16 +65,16 @@ fdisk /dev/sdX
 6. haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", y lurgo:
  ```
  DEVICE       Size     Type
- dev/sda1      3G      EFI System 
- dev/sda2      10G     linux SWAP 
+ dev/sda1      3G      EFI System   
+ dev/sda2      10G     linux SWAP  
  dev/sda3      XG      linux filesysten
 ```
 Se recomienda que la memoria swap sea el doble de la memoria RAM 
 
 7. formatearemos las particiones:
 ```
-mkfs.vfat -F32 dev/sdX1
-mkfs.ext4      dev/sdX3
+mkfs.vfat -F32 dev/sdX1 formateo para la particion efi 
+mkfs.ext4      dev/sdX3 formateo para el sistema de archivos 
 ```
 para la particion swap formatear y activar
 ```
