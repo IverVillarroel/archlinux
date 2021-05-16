@@ -43,8 +43,9 @@ PUNTO DE MONTAJE          PARTICION       TIPO DE PARTICION
   /mnt                    * /dev/sdX1        linux
   [SWAP]                    /dev/sdX2        linux swap 
 ------------------------------------------------------------  
+
+
 PARTICION UEFI GPT
--------------------------------------------------------------
 PARTICION                  PARTICION       TIPO DE PARTICION
 --------------------------------------------------------------
 /mnt/boot o /mnt/EFI      /dev/sdX1           EFI system partition 
