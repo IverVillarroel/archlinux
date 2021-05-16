@@ -84,7 +84,7 @@ swapon /dev/sdX2
 8. para montar los sistemas de archivos 
 ```
 mount /dev/sdX3 /mnt
-mount /dev/sdX1 /mnt/boot/efi
+mount /dev/sdX1 /mnt/boot/efi    previamente crear el directorio "mkdir -p /mnt/boot/efi"
 ```
 9. una vez montada las particiones instalaremos los paquetes escenciales 
 ```
