@@ -52,6 +52,26 @@ PARTICION                  PARTICION       TIPO DE PARTICION
 /mnt                      /dev/sdX2           Linux x86-64 root(/)
 [SWAP]                    /dev/sdX3           Linux Swap
 ```
+para ingresar a la particion usamos la herramienta fdisk o cfdisk
+```
+fdisk /dev/sdX
+```
+para saber si tenemos el sistema BIOS o GPT colocamos el siguiente comando:
+```
+ls /sys/firmware/efi/efivars
+```
+si visualizamos distintos archivos significa que tenemo la particion UEFI. 
+haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
+```
+DEVICE       Size     Type
+dev/sdX1      3G     EFI System 
+dev/sdX2      10     linux SWAP 
+dev/sdX3      XG     linux filesysten
+```
+Se recomienda que la memoria swap sea el doble de la memoria RAM 
+
+
+
 
 
 
