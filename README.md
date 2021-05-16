@@ -1,49 +1,33 @@
 # ArchLinux-Intall-Guide
-Hola te comparto el proceso que realice para instalar archlinux en mi laptop HP, tambien subire las configuraciones de mis programas esenciales. 
-si tienes alguna duda o interrogante puedes ponerte en contacto conmigo, te ayudare con mucho gusto. 'iver014avc@gmail.com'
-instalaremos los siguientes paquetes:
-1. SO archlinux
-2. Xorg 
-3. Qtile
-4. Alacritty 
-5. neovim
-6. google-chrome
-7. Spotify
-
 ## intall ArchLinux
-podemos encontrar la guia oficial desde el sitio oficial archlinux https://wiki.archlinux.org/title/Installation_guide 
+La guia oficial desde el sitio oficial archlinux https://wiki.archlinux.org/title/Installation_guide 
+El presente documento no pretende ser una guía completa para la instalación de ArchLinux. Es una guía rápida para acelerar el proceso de instalación.
 
-primero vamos a descargar la imagen ISO desde https://archlinux.org/download/ seleccionamos el servidor cercano a donde nos encontramos y descargamos la imagen ISO. tambien necesitaremos el programa RUFUS para crear una USB booteable https://rufus.ie/es/ 
+1. vamos a descargar la imagen ISO desde https://archlinux.org/download/ y El programa RUFUS para crear el USB booteable https://rufus.ie/es/ 
+Si la instalación se está haciendo en VirtualBox, configurar la máquina virtual para permitir el arranque con EFI. Seleccionar la máquina virtual, propiedades, System, Enable EFI.
+2. iniciar la computadora desde el usb y seleccionar  Arch Linux Arch ISO x86_64
 
-Ahora cargaremos el la imagen ISO en nuestro USB y reiniciaremos el sistema desde el USB. Archilinux nos dejara en la consola desde ahi tendremos que seguir por nuestra cuenta.
-configuramos nuestro teclado con el siguiente comando:
-```sh
+3. configuramos nuestro teclado con el siguiente comando:
+```
 $ loadkeys Es
 ```
-verificamos la conexion a internet con el siguiente comando:
-```sh
-ping google.com
+4. verificamos la conexion a internet con el siguiente comando:
+```
+ping archlinux.org
 ```
 asegurese que su interfaz de red este en la lista y activada:
 ```
 ip link
 ```
 para el caso de conectarse a una red wifi vease lo siguiente: https://wiki.archlinux.org/title/wpa_supplicant
-Ahora vamos a particionar nuestro disco duro para ello listamos con el comando:
+
+5. Ahora vamos a particionar nuestro disco duro para ello listamos con el comando:
 ```
 fdisk -l
 ```
 los resultados que terminan en room o loop pueden ignorarse.
 El esquema de particionado basico debe ser el siguiente:
 ```
- PARTICION BIOS MBR  
- ------------------------------------------------------------
-PUNTO DE MONTAJE          PARTICION       TIPO DE PARTICION
-  /mnt                    * /dev/sdX1        linux
-  [SWAP]                    /dev/sdX2        linux swap 
-------------------------------------------------------------  
-
-
 PARTICION UEFI GPT
 PARTICION                  PARTICION       TIPO DE PARTICION
 --------------------------------------------------------------
@@ -55,12 +39,13 @@ para ingresar a la particion usamos la herramienta fdisk o cfdisk
 ```
 fdisk /dev/sdX
 ```
-para saber si tenemos el sistema BIOS o GPT colocamos el siguiente comando:
+Para verificar que estamos en modo UEFI, ejecutar el siguiente comando: 
 ```
-ls /sys/firmware/efi/efivars
+ ls /sys/firmware/efi/efivars
 ```
-si visualizamos distintos archivos significa que tenemo la particion UEFI. 
-haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
+    *Si se muestra contenido en la carpeta efivars, quiere decir que arrancamos el sistema correctamente en modo UEFI.*
+```
+6. haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT", 
  ```
  DEVICE       Size     Type
  dev/sda1      3G      EFI System 
@@ -68,7 +53,7 @@ haremos la instalacion de UEFI empezando a crear el tablero de particiones "GPT"
  dev/sda3      XG      linux filesysten
 ```
 Se recomienda que la memoria swap sea el doble de la memoria RAM 
-formatearemos las particiones:
+7. formatearemos las particiones:
 ```
 mkfs.vfat -F32 dev/sdX1
 mkfs.ext4      dev/sdX3
@@ -78,12 +63,12 @@ para la particion swap formatear y activar
 mkswap /dev/sdX2
 swapon /dev/sdX2
 ```
-para montar los sistemas de archivos 
+8. para montar los sistemas de archivos 
 ```
 mount /dev/sdX3 /mnt
 mount /dev/sdX1 /mnt/boot/efi
 ```
-una vez montada las particiones instalaremos los paquetes escenciales 
+9. una vez montada las particiones instalaremos los paquetes escenciales 
 ```
 pacstrap /mnt base linux linux-firmware base-devel efibootmgr grub networkmanager dhcpcd neovim
 ```
@@ -95,41 +80,68 @@ paquetes adicionales para el touchpad
 ```
 xf86-input-synaptics
 ```
-configuracion del sistema 
+10. configuracion del sistema 
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
-ingresando al sistema con chroot
+  Verificar:
+        cat /mnt/etc/fstab
+11. ingresando al sistema con chroot
 ```
 arch-chroot /mnt
 ```
-configurando la zona horaria, idioma del sistema ingles, distribucion del teclado 
+12.configurando la zona horaria, idioma del sistema ingles, distribucion del teclado 
 ```
 ln -sf /usr/share/zoneinfo/America/La_Paz /etc/localtime
 locale.gen 
 nvim /etc/vconsole.conf  "KEYMAP=la-latin1"
-nvim /etc/hostname       "nombredelequipo"
+echo nombredelequipo > /etc/hostname
 ```
-al iniciar archlinux no cargara no gestionara el internet por cable es necesario activarlo 
+13. En caso de tener sólo wifi, usar [iwctl](https://wiki.archlinux.org/index.php/Iwd#iwctl):
+        iwctl    
+    Listar los dispositivos:
+        device list
+    Escanear redes:    
+        station <dispositivo> scan        
+    Listar redes disponibles:        
+        station <dispositivo> get-networks     
+    Conectarse a una red:    
+        station <dispositivo> connect <SSID>
+    Salir de iwctl:    
+        exit
+
+14. al momento de iniciar archlinux no cargara, no gestionara el internet por cable es necesario activarlo 
 ```
 systemctl enable NetworkManager
 ```
-para gestionar el wifi 
+para gestionar el wifi con wpa_supplicant
 ```
 nmcli dev wifi connect "ssid" password "00000"
 ```
-añadir contraseña al root, crear un nuevo usuario y contraseña de usuario.
+ *****
+ 
+15. Activar la sincronización del reloj del sistema con Internet: 
+
+        timedatectl set-ntp true
+
+     Verificar: (opcional)
+
+        timedatectl status
+16. añadir contraseña al root, crear un nuevo usuario y contraseña de usuario.
 ```
 passwd 
 useradd -m usuario
 passwd usuario
 ```
-crear el gestor de arranque con grub
+16. crear el gestor de arranque con grub
 ```
 grub-install --efi-directory=/boot/efi --bootloader-id=grub
 generar el acrchivo de configuracion
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+
+
 
 
 
