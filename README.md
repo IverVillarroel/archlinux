@@ -10,4 +10,4 @@ instalaremos los siguientes paquetes:
 6. google-chrome
 7. Spotify
 
-###Empecemos
+### Empecemos
