@@ -29,3 +29,25 @@ si es el caso no tener internet, listamos las interfaces de red:
 ```
 ip link
 ```
+para el caso de conectarse a una red wifi vease lo siguiente: https://wiki.archlinux.org/title/wpa_supplicant
+Ahora vamos a particionar nuestro disco duro para ello listamos con el comando:
+```
+fdisk -l
+```
+los resultados que terminan en room o loop pueden ignorarse.
+El esquema de particionado basico debe ser el siguiente:
+```
+ PARTICION BIOS MBR             
+PUNTO DE MONTAJE          PARTICION       TIPO DE PARTICION
+  /mnt                    * /dev/sdX1        linux
+  [SWAP]                    /dev/sdX2        linux swap 
+  
+PARTICION UEFI GPT
+PARTICION                  PARTICION       TIPO DE PARTICION
+/mnt/boot o /mnt/EFI      /dev/sdX1           EFI system partition 
+/mnt                      /dev/sdX2           Linux x86-64 root(/)
+[SWAP]                    /dev/sdX3           Linux Swap
+```
+
+
+
