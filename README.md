@@ -73,8 +73,8 @@ Se recomienda que la memoria swap sea el doble de la memoria RAM
 
 7. formatearemos las particiones:
 ```
-mkfs.vfat -F32 dev/sdX1 formateo para la particion efi 
-mkfs.ext4      dev/sdX3 formateo para el sistema de archivos 
+mkfs.vfat -F32 dev/sdX1 formato para la particion efi 
+mkfs.ext4      dev/sdX3 formato para el sistema de archivos 
 ```
 para la particion swap formatear y activar
 ```
